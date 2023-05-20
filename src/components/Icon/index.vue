@@ -38,6 +38,8 @@ export default {
 }
 </script>
 
-<style scoped>
+<style lang="stylus" scoped>
 @import "//at.alicdn.com/t/font_2164449_nalfgtq7il.css";
+.icon-container
+  font-size inherit
 </style>

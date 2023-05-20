@@ -6,8 +6,11 @@
     <!-- <div class="empty-box">
       <Empty text="测试文案"/>
     </div> -->
-    <div class="img-box">
+    <!-- <div class="img-box">
       <ImageLoader :src="imgSrc" :placeholder="placeholderSrc" :duration="3000" @load="handleLoad"/>
+    </div> -->
+    <div class="contact-box">
+      <Contact />
     </div>
   </div>
 </template>
@@ -17,13 +20,15 @@ import Icon from '@/components/Icon'
 import Pager from '@/components/Pager'
 import Empty from '@/components/Empty'
 import ImageLoader from '@/components/ImageLoader'
+import Contact from '@/components/Contact'
 export default {
   name: 'App',
   components: {
     Icon,
     Pager,
     Empty,
-    ImageLoader
+    ImageLoader,
+    Contact
   },
   data () {
     return {
@@ -64,4 +69,11 @@ export default {
   width 500px
   height 300px
   margin 20px auto
+.contact-box
+  width 300px
+  height 600px
+  background-color #000
+  display flex
+  flex-direction column
+  justify-content center
 </style>
