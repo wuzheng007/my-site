@@ -3,8 +3,11 @@
     <!-- <h1>App组件</h1> -->
     <!-- <Icon type="home"/> -->
     <!-- <Pager :current="currentPage" :total="total" :visibleNumber="visibleNumber" @changePage="handleChangePage"/> -->
-    <div class="empty-box">
+    <!-- <div class="empty-box">
       <Empty text="测试文案"/>
+    </div> -->
+    <div class="img-box">
+      <ImageLoader :src="imgSrc" :placeholder="placeholderSrc" :duration="3000" @load="handleLoad"/>
     </div>
   </div>
 </template>
@@ -13,18 +16,24 @@
 import Icon from '@/components/Icon'
 import Pager from '@/components/Pager'
 import Empty from '@/components/Empty'
+import ImageLoader from '@/components/ImageLoader'
 export default {
   name: 'App',
   components: {
     Icon,
     Pager,
-    Empty
+    Empty,
+    ImageLoader
   },
   data () {
     return {
       currentPage: 3,
       total: 112,
-      visibleNumber: 10
+      visibleNumber: 10,
+      // placeholderSrc: 'https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?w=100',
+      placeholderSrc: 'https://img0.baidu.com/it/u=638700476,1418659625&fm=253&fmt=auto&app=138&f=JPEG?w=767&h=500',
+      // imgSrc: 'https://images.pexels.com/photos/33109/fall-autumn-red-season.jpg?fit=crop&crop=entropy&w=3456&h=2304'
+      imgSrc: 'https://img2.baidu.com/it/u=3793294202,3554607989&fm=253&fmt=auto&app=120&f=JPEG?w=1280&h=800'
     }
   },
   methods: {
@@ -36,8 +45,11 @@ export default {
      * @return {返回类型说明}
      * @exception [违例类型] [违例类型说明]
      */
-    handleChangePage(e) {
+    handleChangePage (e) {
       this.currentPage = e
+    },
+    handleLoad() {
+      console.log('图片加载完成')
     }
   }
 }
@@ -48,4 +60,8 @@ export default {
   width 600px
   height 300px
   border 1px solid #aaa
+.img-box
+  width 500px
+  height 300px
+  margin 20px auto
 </style>
