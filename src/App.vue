@@ -9,8 +9,11 @@
     <!-- <div class="img-box">
       <ImageLoader :src="imgSrc" :placeholder="placeholderSrc" :duration="3000" @load="handleLoad"/>
     </div> -->
-    <div class="contact-box">
+    <!-- <div class="contact-box">
       <Contact />
+    </div> -->
+    <div class="menu-box">
+      <Menu />
     </div>
   </div>
 </template>
@@ -21,6 +24,7 @@ import Pager from '@/components/Pager'
 import Empty from '@/components/Empty'
 import ImageLoader from '@/components/ImageLoader'
 import Contact from '@/components/Contact'
+import Menu from '@/components/Menu'
 export default {
   name: 'App',
   components: {
@@ -28,7 +32,8 @@ export default {
     Pager,
     Empty,
     ImageLoader,
-    Contact
+    Contact,
+    Menu
   },
   data () {
     return {
@@ -76,4 +81,8 @@ export default {
   display flex
   flex-direction column
   justify-content center
+.menu-box
+  width 300px
+  height 600px
+  background-color #000
 </style>
