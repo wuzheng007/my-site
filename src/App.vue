@@ -1,39 +1,17 @@
 <template>
   <div id="app">
-    <!-- <h1>App组件</h1> -->
-    <!-- <Icon type="home"/> -->
-    <!-- <Pager :current="currentPage" :total="total" :visibleNumber="visibleNumber" @changePage="handleChangePage"/> -->
-    <!-- <div class="empty-box">
-      <Empty text="测试文案"/>
-    </div> -->
-    <!-- <div class="img-box">
-      <ImageLoader :src="imgSrc" :placeholder="placeholderSrc" :duration="3000" @load="handleLoad"/>
-    </div> -->
-    <!-- <div class="contact-box">
-      <Contact />
-    </div> -->
-    <div class="menu-box">
-      <Menu />
+    <div class="site-aside-box">
+      <SiteAside />
     </div>
   </div>
 </template>
 
 <script>
-import Icon from '@/components/Icon'
-import Pager from '@/components/Pager'
-import Empty from '@/components/Empty'
-import ImageLoader from '@/components/ImageLoader'
-import Contact from '@/components/Contact'
-import Menu from '@/components/Menu'
+import SiteAside from '@/components/SiteAside'
 export default {
   name: 'App',
   components: {
-    Icon,
-    Pager,
-    Empty,
-    ImageLoader,
-    Contact,
-    Menu
+    SiteAside
   },
   data () {
     return {
@@ -66,23 +44,4 @@ export default {
 </script>
 
 <style lang="stylus">
-.empty-box
-  width 600px
-  height 300px
-  border 1px solid #aaa
-.img-box
-  width 500px
-  height 300px
-  margin 20px auto
-.contact-box
-  width 300px
-  height 600px
-  background-color #000
-  display flex
-  flex-direction column
-  justify-content center
-.menu-box
-  width 300px
-  height 600px
-  background-color #000
 </style>

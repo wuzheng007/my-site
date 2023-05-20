@@ -27,7 +27,7 @@
         <div class="icon-box">
           <Icon type="github"/>
         </div>
-        <span>1657955621</span>
+        <span>https://github.com/</span>
       </a>
       <div class="popup">
         <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">
@@ -38,7 +38,7 @@
         <div class="icon-box">
           <Icon type="weixin"/>
         </div>
-        <span>1657955621</span>
+        <span>18279163180</span>
       </a>
       <div class="popup">
         <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">

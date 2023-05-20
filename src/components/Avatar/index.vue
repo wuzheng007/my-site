@@ -1,7 +1,5 @@
 <template>
-  <div class="avatar-container">
-    <img class="avatar-img" :src="src" :style="{ width: size+'px', height: size+'px' }" alt="该图片无法加载">
-  </div>
+  <img class="avatar-container avatar-img" :src="src" :style="{ width: size+'px', height: size+'px' }" alt="该图片无法加载">
 </template>
 
 <script>
