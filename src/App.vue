@@ -8,7 +8,7 @@
       </template>
       <template #default>
         <div class="main">
-          <div>内容区</div>
+          <router-view></router-view>
         </div>
       </template>
     </Layout>
@@ -24,12 +24,6 @@ export default {
     Layout,
     SiteAside
   },
-  data () {
-    
-  },
-  methods: {
-    
-  }
 }
 </script>
 

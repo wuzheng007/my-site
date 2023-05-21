@@ -1,11 +1,11 @@
 <template>
   <nav class="menu-container">
-    <a class="menu-item" :class="{selected: isSelected(item.link)}" :href="item.link" v-for="(item, index) in menuList" :key="index">
+    <router-link class="menu-item" active-class="selected" :exact="item.name !== 'blog'" :to="{name: item.name}" v-for="(item, index) in menuList" :key="index">
       <div class="icon-box">
         <Icon :type="item.icon"/>
       </div>
       <span>{{item.title}}</span>
-    </a>
+    </router-link>
   </nav>
 </template>
 
@@ -20,40 +20,31 @@ export default {
     return {
       menuList: [
         {
-          link: '/',
+          name: 'home',
           title: '首页',
           icon: 'home'
         },
         {
-          link: '/blog',
+          name: 'blog',
           title: '文章',
           icon: 'blog'
         },
         {
-          link: '/about',
+          name: 'about',
           title: '关于我',
           icon: 'about'
         },
         {
-          link: '/project',
+          name: 'project',
           title: '项目&效果',
           icon: 'code'
         },
         {
-          link: '/message',
+          name: 'message',
           title: '留言板',
           icon: 'chat'
         },
       ]
-    }
-  },
-  methods: {
-    isSelected (link) {
-      if(['/blog'].includes(link)) {
-        return location.pathname.startsWith(link)
-      }else {
-        return location.pathname.toLowerCase() === link.toLowerCase()
-      }
     }
   }
 }
