@@ -48,7 +48,7 @@ export default {
   position relative
   overflow hidden
   .img
-    selt-fill()
+    self-fill()
     object-fit contain
     &.origin-img
       opacity 0

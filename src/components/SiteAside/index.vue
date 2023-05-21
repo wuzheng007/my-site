@@ -28,9 +28,10 @@ export default {
 
 <style lang="stylus" scoped>
 .site-aside-container
-  width 300px
-  height 600px
-  padding 20px 0
+  box-sizing border-box
+  width 100%
+  height 100%
+  padding: 20px 0
   background-color #000
   overflow-x hidden
   overflow-y auto
