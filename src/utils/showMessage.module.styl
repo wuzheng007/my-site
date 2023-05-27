@@ -1,0 +1,33 @@
+@import '~@/styles/var.styl'
+@import '~@/styles/mixin.styl'
+.message
+  self-center()
+  display flex
+  align-items center
+  box-shadow -2px 2px 5px rgba(0, 0, 0, 0.5)
+  border-radius 5px
+  padding 10px 30px
+  color #fff
+  z-index 999
+  transition .5s
+  transform translate(-50%, calc(-50% + 25px))
+  opacity 0
+  &.info
+    background-color $primary
+  &.error
+    background-color $danger
+  &.warn
+    background-color $warn
+  &.success
+    background-color $success
+  &.fadein // 渐显
+    transform translate(-50%, -50%)
+    opacity 1
+  &.fadeout // 渐隐
+    transform translate(-50%, calc(-50% - 25px))
+    opacity 0
+  .icon
+    font-size 20px
+    margin-right 8px
+  .text
+    white-space nowrap
