@@ -31,14 +31,14 @@ export default {
   box-sizing border-box
   width 100%
   height 100%
-  padding: 20px 0
+  padding-top: 1em
   background-color #000
   overflow-x hidden
   overflow-y auto
   .avatar-container
-    margin 0 auto 20px
+    margin 0 auto
   .title
-    margin 0
+    margin 1em auto
     font-size 1.2em
     color #fff
     text-align center

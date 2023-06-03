@@ -49,7 +49,7 @@ export default {
   overflow hidden
   .img
     self-fill()
-    object-fit contain
+    object-fit cover
     &.origin-img
       opacity 0
       z-index 1

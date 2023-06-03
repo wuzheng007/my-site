@@ -29,11 +29,12 @@ export default {
 
 <style lang="stylus" scoped>
 @import '~@/styles/mixin.styl'
+@import '~@/styles/var.styl'
 .app-container
   self-fill(fixed)
   .left
     width 300px
     height 100%
   .main
-    background-color #ccc
+    background-color $dark
 </style>
