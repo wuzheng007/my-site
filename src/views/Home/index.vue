@@ -1,5 +1,5 @@
 <template>
-  <div class="home-container" ref="container" @wheel="handleWheel">
+  <div class="home-container" ref="container" v-loading="loading" @wheel="handleWheel">
     <!-- 内容 -->
     <ul class="carousel-container" :style="{marginTop: marginTop+'px'}" @transitionend="handleTransitionend">
       <li v-for="item in banners" :key="item.id">
@@ -37,6 +37,7 @@ export default {
       index: 0, // 当前轮播的索引
       containerHeight: 0, // 容器高度
       switching: false, // 轮播是否正在切换中
+      loading: false
     }
   },
   computed: {
@@ -60,11 +61,13 @@ export default {
   },
   methods: {
     async getBanners () {
+      this.loading = true
       try {
         this.banners = await getBanners()
-        console.log('this.banners', this.banners)
       } catch (err) {
         console.warn(err)
+      }finally {
+        this.loading = false
       }
     },
     /**
