@@ -170,7 +170,7 @@ export default {
     overflow hidden
     text-shadow 0.1px 0 0 rgba(0, 0, 0, 0.5), -0.1px 0 0 rgba(0, 0, 0, 0.5), 0 0.1px 0 rgba(0, 0, 0, 0.5), 0 -0.1px 0 rgba(0, 0, 0, 0.5)
   .title
-    top calc(50% - 50px)
+    top calc(50% - 60px)
   .desc
     top 50%
 </style>

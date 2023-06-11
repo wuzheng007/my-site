@@ -1,5 +1,6 @@
 import Home from '@/views/Home'
 import Blog from '@/views/Blog'
+import BlogDetail from '@/views/Blog/Detail'
 import About from '@/views/About'
 import Project from '@/views/Project'
 import Message from '@/views/Message'
@@ -18,6 +19,11 @@ const routes = [
     name: 'categoryBlog',
     path: '/article/cate/:categoryId',
     component: Blog
+  },
+  {
+    name: 'blogDetail',
+    path: '/article/:id',
+    component: BlogDetail
   },
   {
     name: 'about',

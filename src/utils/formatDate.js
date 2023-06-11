@@ -7,6 +7,7 @@
  * @exception [违例类型] [违例类型说明]
  */
 export default function (timestramp) {
+  if (!timestramp) return ''
   const date = new Date(+timestramp)
   const year = date.getFullYear()
   const month = date.getMonth() + 1

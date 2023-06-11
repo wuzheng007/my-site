@@ -16,7 +16,7 @@ export default function (el, binding) {
   // loading指令的绑定值为true，并且绑定指令的元素内部没有loading图片元素,就创建laoding图片插入该元素
   if (binding.value && !loadingImg) {
     // 当绑定指令的元素的position是默认值时，添加一个类名，样式是position: relative
-    if (getComputedStyle(el).position === 'static') {
+    if (getComputedStyle(el).position === 'static' || !getComputedStyle(el).position) {
       el.classList.add(styles.parent)
     }
     el.append(createLoadingImg())

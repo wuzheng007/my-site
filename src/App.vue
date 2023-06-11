@@ -7,9 +7,7 @@
         </div>
       </template>
       <template #default>
-        <div class="main">
-          <router-view></router-view>
-        </div>
+        <router-view></router-view>
       </template>
     </Layout>
   </div>
@@ -35,6 +33,4 @@ export default {
   .left
     width 300px
     height 100%
-  .main
-    // background-color $dark
 </style>

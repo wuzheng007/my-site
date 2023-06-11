@@ -3,7 +3,7 @@
     <li v-for="item in list" :key="item.id">
       <p class="name" :class="{selected: item.isSelected}" @click="clickNode(item)">
         <span>{{item.name}}</span>
-        <span class="aside" :class="{selected: item.isSelected}">{{item.articleCount}}篇</span>
+        <span v-if="item.articleCount" class="aside" :class="{selected: item.isSelected}">{{item.articleCount}}篇</span>
       </p>
       <!-- 组件递归 -->
       <RightList :list="item.children" @nodeClick="clickNode" />
@@ -39,6 +39,8 @@ export default {
 <style lang="stylus" scoped>
 @import '~@/styles/var.styl'
 .right-list-container
+  width 100%
+  height 100%
   padding-left 0
   .right-list-container
     padding-left 1em

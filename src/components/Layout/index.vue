@@ -23,13 +23,13 @@ export default {
 
 <style lang="stylus" scoped>
 .layout-container
-  display flex
   height 100%
-  .left,
-  .right
+  width 100%
+  display flex
+  .left, .right
     flex 0 0 auto
-    height 100%
+    overflow hidden
   .main
     flex 1 1 auto
-    height 100%
+    overflow hidden
 </style>

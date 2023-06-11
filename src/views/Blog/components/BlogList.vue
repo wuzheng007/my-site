@@ -1,20 +1,39 @@
 <template>
   <ul class="blog-list-container">
     <li class="article-item" v-for="item in list" :key="item.id">
-      <div class="thumb">
-        <a href="">
+      <div class="thumb" v-if="item.thumb">
+        <router-link :to="{
+          name: 'blogDetail',
+          params: {
+            id: item.id
+          }
+        }">
           <img :src="item.thumb" :alt="item.title" :title="item.title">
-        </a>
+        </router-link>
       </div>
       <div class="body">
-        <a href="">
+        <router-link :to="{
+          name: 'blogDetail',
+          params: {
+            id: item.id
+          }
+        }">
           <h2 class="title">{{item.title}}</h2>
-        </a>
+        </router-link>
         <div class="aside">
           <span class="date">日期：{{formatDate(item.createDate)}}</span>
           <span class="scan">浏览：{{item.scanNumber}}</span>
           <span class="comment">评论：{{item.commentNumber}}</span>
-          <span>{{item.category.name}}</span>
+          <span>
+            <router-link :to="{
+              name: 'categoryBlog',
+              params: {
+                categoryId: item.category.id
+              }
+            }">
+              {{item.category.name}}
+            </router-link>
+          </span>
         </div>
         <p class="desc">{{item.description}}</p>
       </div>

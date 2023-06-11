@@ -1,14 +1,11 @@
 <template>
   <Layout>
     <div ref="leftContainer" class="left-container" v-loading="loading">
-      <BlogList :list="articleData.rows" />
-      <Pager :current="routeInfo.page" :limit="routeInfo.limit" :total="articleData.total" @changePage="handleChangePage" />
+      <BlogList :list="data.rows" />
+      <Pager :current="routeInfo.page" :limit="routeInfo.limit" :total="data.total" @changePage="handleChangePage" />
     </div>
     <template #right>
-      <div class="cate">
-        <h2 class="title">分类列表</h2>
-        <RightList v-loading="cateLoading" :list="formatCategoryList" @nodeClick="handleNodeClick" />
-      </div>
+      <BlogCategory />
     </template>
   </Layout>
 </template>
@@ -17,22 +14,20 @@
 import Layout from '@/components/Layout'
 import BlogList from './components/BlogList'
 import Pager from '@/components/Pager'
-import RightList from './components/RightList'
-import { getBlogTypes, getBlogs } from '@/api/blog'
+import BlogCategory from './components/BlogCategory'
+import { getBlogs } from '@/api/blog'
+import fetchData from '@/mixins/fetchData'
 export default {
   name: 'Blog',
+  mixins: [fetchData({})],
   components: {
     Layout,
     BlogList,
     Pager,
-    RightList,
+    BlogCategory,
   },
   data () {
     return {
-      categoryList: [], // 分类列表
-      articleData: {}, // 文章分页数据
-      loading: false,
-      cateLoading: false
     }
   },
   computed: {
@@ -46,85 +41,24 @@ export default {
         limit
       }
     },
-    // 格式化后的分类列表
-    formatCategoryList () {
-      const list = [
-        {
-          id: -1,
-          name: '全部',
-          order: 0,
-          articleCount: this.categoryList.reduce((a,b) => a + b.articleCount, 0)
-        },
-        ...this.categoryList
-      ]
-      return list.map(item => {
-        return {
-          ...item,
-          isSelected: item.id === this.routeInfo.categoryId,
-          articleCount: item.articleCount
-        }
-      })
-    }
   },
   watch: {
-    $route (newVal) {
-      this.getArticleData()
+    async $route () {
       // 滚动到容器顶部
       this.$refs.leftContainer.scrollTop = 0
+      this.loading = true
+      this.data = await this.fetchData()
+      this.loading = false
     }
   },
-  mounted () {
-    this.getCategoryList()
-    this.getArticleData()
-  },
   methods: {
-    // 获取分类数据
-    async getCategoryList () {
-      this.cateLoading = true
-      try {
-        this.categoryList = await getBlogTypes()
-      } catch (err) {
-        console.warn(err)
-      } finally {
-        this.cateLoading = false
-      }
-    },
-    // 获取文章分页
-    async getArticleData () {
-      this.loading = true
+    fetchData () {
       const params = {
         page: this.routeInfo.pahe,
         limit: this.routeInfo.limit,
         categoryId: this.routeInfo.categoryId
       }
-      try {
-        this.articleData = await getBlogs(params)
-      } catch (err) {
-        console.warn(err)
-      } finally {
-        this.loading = false
-      }
-    },
-    handleNodeClick (node) {
-      const query = {
-        page: this.routeInfo.page,
-        limit: this.routeInfo.limit
-      }
-      const params = {
-        categoryId: node.id
-      }
-      if (node.id === -1) {
-        this.$router.push({
-          name: 'blog',
-          query
-        })
-      } else {
-        this.$router.push({
-          name: 'categoryBlog',
-          query,
-          params
-        })
-      }
+      return getBlogs(params)
     },
     /**
      * @Date 2023-06-09 23:29:00
@@ -167,16 +101,4 @@ export default {
   padding 1em
   overflow auto
   scroll-behavior smooth // 平滑滚动
-.cate
-  box-sizing border-box
-  padding 1em
-  width 300px
-  height 100%
-  overflow auto
-  display flex
-  flex-direction column
-  .title
-    margin 0 0 0.3em
-  .right-list-container
-    flex 1 1 auto
 </style>
