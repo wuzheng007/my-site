@@ -4,7 +4,7 @@
     <div class="aside">
       <span>日期：{{formatDate(blog.createDate)}}</span>
       <span>浏览：{{blog.scanNumber}}</span>
-      <a href="">评论：{{blog.commentNumber}}</a>
+      <a href="#data-form-container">评论：{{blog.commentNumber}}</a>
       <a href="">{{blog.category?.name}}</a>
     </div>
     <div v-html="blog.htmlContent" class="markdown-body"></div>
@@ -31,18 +31,12 @@ export default {
 <style lang="stylus" scoped>
 @import '~@/styles/markdown.css'
 @import '~@/styles/var.styl'
-.blog-detail-container
-  box-sizing border-box
-  width 100%
-  height 100%
-  padding 1em
-  overflow-x hidden
-  overflow-y auto
-  scroll-behavior smooth
 .aside
   margin-bottom 1.5em
   color $gray
   font-size 12px
   span, a
     margin-right 1.5em
+.markdown-body
+  margin-bottom 20px
 </style>

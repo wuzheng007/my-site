@@ -24,7 +24,7 @@ export const getBlog = (id) => {
 /**
  * 提交评论
  */
-export const poatComment = (data) => {
+export const postComment = (data) => {
   return request.post('/api/comment', data)
 }
 
