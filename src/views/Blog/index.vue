@@ -1,6 +1,6 @@
 <template>
   <Layout>
-    <div ref="leftContainer" class="left-container" v-loading="loading">
+    <div ref="leftContainer" class="left-container" v-loading="loading" @scroll="handleScroll">
       <BlogList :list="data.rows" />
       <Pager :current="routeInfo.page" :limit="routeInfo.limit" :total="data.total" @changePage="handleChangePage" />
     </div>
@@ -17,9 +17,10 @@ import Pager from '@/components/Pager'
 import BlogCategory from './components/BlogCategory'
 import { getBlogs } from '@/api/blog'
 import fetchData from '@/mixins/fetchData'
+import mainScroll from '@/mixins/mainScroll'
 export default {
   name: 'Blog',
-  mixins: [fetchData({})],
+  mixins: [fetchData({}), mainScroll('leftContainer')],
   components: {
     Layout,
     BlogList,

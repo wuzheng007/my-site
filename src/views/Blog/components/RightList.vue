@@ -40,7 +40,6 @@ export default {
 @import '~@/styles/var.styl'
 .right-list-container
   width 100%
-  height 100%
   padding-left 0
   .right-list-container
     padding-left 1em

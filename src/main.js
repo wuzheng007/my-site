@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './styles/gloab.styl'
 import { showMessage } from '@/utils/index'
+import './eventBus'
 // 导入mock
 import './mock'
 import vLoading from '@/directives/loading'

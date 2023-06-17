@@ -23,7 +23,7 @@
         <div class="aside">
           <span class="date">日期：{{formatDate(item.createDate)}}</span>
           <span class="scan">浏览：{{item.scanNumber}}</span>
-          <span class="comment">评论12：{{item.commentNumber}}</span>
+          <span class="comment">评论：{{item.commentNumber}}</span>
           <span>
             <router-link :to="{
               name: 'categoryBlog',

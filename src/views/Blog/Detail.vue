@@ -1,8 +1,8 @@
 <template>
   <Layout>
-    <div class="main-container" v-loading="loading">
+    <div ref="mainScroll" class="main-container" v-loading="loading" @scroll="handleScroll">
       <BlogDetail v-if="data" :blog="data" />
-      <BlogComment v-if="!loading"/>
+      <BlogComment v-if="!loading" />
     </div>
     <template #right>
       <BlogToc v-if="data" :list="data.toc" />
@@ -16,10 +16,11 @@ import BlogDetail from './components/BlogDetail'
 import BlogComment from './components/BlogComment'
 import BlogToc from './components/BlogToc'
 import fetchData from '@/mixins/fetchData'
+import mainScroll from '@/mixins/mainScroll'
 import { getBlog } from '@/api/blog'
 export default {
   name: 'Detail',
-  mixins: [fetchData(null)],
+  mixins: [fetchData(null), mainScroll('mainScroll')],
   components: {
     Layout,
     BlogDetail,
@@ -35,6 +36,14 @@ export default {
     fetchData () {
       return getBlog(this.blogId)
     }
+  },
+  updated () {
+    // 当页面刷新之后，会回到顶部，所有在这里将哈希值处理一下，已经页面跳转到之前激活的锚链接处
+    const hash = location.hash
+    location.hash = ''
+    this.$nextTick(() => {
+      location.hash = hash
+    })
   }
 }
 </script>

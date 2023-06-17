@@ -1,7 +1,9 @@
 <template>
-  <div class="blog-categroy-container">
-    <h2 class="title">分类列表</h2>
-    <RightList v-loading="loading" :list="categoryList" @nodeClick="handleNodeClick" />
+  <div class="blog-categroy-container" v-loading="loading">
+    <template v-if="data.length">
+      <h2 class="title">分类列表</h2>
+      <RightList :list="categoryList" @nodeClick="handleNodeClick" />
+    </template>
   </div>
 </template>
 
@@ -81,7 +83,7 @@ export default {
   box-sizing border-box
   width 300px
   height 100%
-  padding-left 1em 
+  padding-left 1em
   overflow auto
   .title
     margin 0 0 0.3em
