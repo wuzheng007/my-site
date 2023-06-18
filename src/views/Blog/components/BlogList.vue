@@ -8,7 +8,9 @@
             id: item.id
           }
         }">
-          <img :src="item.thumb" :alt="item.title" :title="item.title">
+          <img v-lazy="item.thumb" :alt="item.title" :title="item.title">
+          <!-- 直接在img元素上添加loading属性，属性值设置为lazy，也可以实现图片的懒加载效果 -->
+          <!-- <img loading="lazy" :src="item.thumb" :alt="item.title" :title="item.title"> -->
         </router-link>
       </div>
       <div class="body">

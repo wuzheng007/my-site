@@ -1,3 +1,7 @@
+/* 
+在容器正中间插入一个loading效果的图片，实现一个加载效果 
+*/
+
 import loadingImgUrl from '@/assets/loading.svg'
 import styles from './style.module.styl'
 // 创建loading图片元素

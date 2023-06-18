@@ -7,11 +7,13 @@ import './eventBus'
 // 导入mock
 import './mock'
 import vLoading from '@/directives/loading'
+import vLazy from '@/directives/lazy'
 // 将展示消息的方法挂载在vue的原型上
 Vue.prototype.$showMessage = showMessage
 Vue.config.productionTip = false
 // 注册全局指令v-loading
 Vue.directive('loading', vLoading)
+Vue.directive('lazy', vLazy)
 
 new Vue({
   render: h => h(App),

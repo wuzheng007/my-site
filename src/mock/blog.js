@@ -36,7 +36,7 @@ Mock.mock(/^\/api\/blog(\?.+)?$/, 'get', (options) => {
           },
           'scanNumber|0-3000': 0,
           'commentNumber|0-300': 0,
-          'thumb|1': [Mock.Random.image('300x250', '#00405d', '#FFF', 'Mock.js'), null], // 随机图片
+          'thumb|1': ['@image(300x250, @color, @word)', null], // 随机图片
           createDate: '@date("T")' // 随机一个时间戳
         }
       ]
