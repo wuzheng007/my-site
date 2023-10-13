@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import routes from './routes'
+import { titleControl } from '@/utils'
 Vue.use(VueRouter)
 
 const router = new VueRouter({
@@ -11,4 +12,10 @@ const router = new VueRouter({
   }
 })
 
+// 全局后置路由守卫
+router.afterEach((to) => {
+  if(to.meta.title) {
+    titleControl.setRouteTitle(to.meta.title)
+  }
+})
 export default router

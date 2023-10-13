@@ -22,9 +22,9 @@
 </template>
 
 <script>
-import { getBanners } from '@/api/banner'
 import Icon from '@/components/Icon'
 import CarouselItem from './CarouselItem.vue'
+import {mapState, mapActions} from 'vuex'
 export default {
   name: 'Home',
   components: {
@@ -33,20 +33,22 @@ export default {
   },
   data () {
     return {
-      banners: [],
       index: 0, // 当前轮播的索引
       containerHeight: 0, // 容器高度
       switching: false, // 轮播是否正在切换中
-      loading: false
     }
   },
   computed: {
+    ...mapState({
+      banners: state => state.banner.data,
+      loading: state => state.banner.loading,
+    }),
     marginTop() {
       return -this.containerHeight*this.index
     }
   },
   created () {
-    this.getBanners()
+    this.fetchData()
   },
   mounted () {
     // 获取容器的高度
@@ -60,16 +62,7 @@ export default {
     })
   },
   methods: {
-    async getBanners () {
-      this.loading = true
-      try {
-        this.banners = await getBanners()
-      } catch (err) {
-        console.warn(err)
-      }finally {
-        this.loading = false
-      }
-    },
+    ...mapActions('banner', ['fetchData']),
     /**
      * @Date 2023-06-03 16:22:50
      * @introduction 鼠标滚轮事件回调

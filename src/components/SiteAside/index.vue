@@ -1,9 +1,11 @@
 <template>
   <div class="site-aside-container">
-    <Avatar src="https://img2.baidu.com/it/u=1612835289,3257047895&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=500" :size="150" />
-    <h2 class="title">{{title}}</h2>
-    <Menu />
-    <Contact />
+    <template v-if="data">
+      <Avatar :src="data.avatar" :size="150" />
+      <h2 class="title">{{data.siteTitle}}</h2>
+      <Menu />
+      <Contact :data="data"/>
+    </template>
   </div>
 </template>
 
@@ -11,6 +13,7 @@
 import Avatar from '@/components/Avatar'
 import Contact from './Contact'
 import Menu from './Menu'
+import { mapState } from 'vuex'
 export default {
   name: 'SiteAside',
   components: {
@@ -18,10 +21,8 @@ export default {
     Contact,
     Menu
   },
-  data() {
-    return {
-      title: '吴政的空间'
-    }
+  computed: {
+    ...mapState('setting', ['data'])
   }
 }
 </script>

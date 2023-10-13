@@ -3,45 +3,39 @@
     <li>
       <a href="tencent://message/?Menu=yes&uin=1657955621&Service=300&sigT=45a1e5847943b64c6ff3990f8a9e644d2b31356cb0b4ac6b24663a3c8dd0f8aa12a595b1714f9d45">
         <div class="icon-box">
-          <Icon type="qq"/>
+          <Icon type="qq" />
         </div>
-        <span>1657955621</span>
+        <span>{{data.qq}}</span>
       </a>
       <div class="popup">
-        <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">
+        <img class="qrcode-img" :src="data.qqQrCode" alt="">
       </div>
     </li>
     <li>
       <a href="mailto:1657955621@qq.com">
         <div class="icon-box">
-          <Icon type="mail"/>
+          <Icon type="mail" />
         </div>
-        <span>1657955621@qq.com</span>
+        <span>{{data.mail}}</span>
       </a>
-      <div class="popup">
-        <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">
-      </div>
+    </li>
+    <li>
+      <a :href="data.github">
+        <div class="icon-box">
+          <Icon type="github" />
+        </div>
+        <span>{{data.githubName}}</span>
+      </a>
     </li>
     <li>
       <a>
         <div class="icon-box">
-          <Icon type="github"/>
+          <Icon type="weixin" />
         </div>
-        <span>https://github.com/</span>
+        <span>{{data.weixin}}</span>
       </a>
       <div class="popup">
-        <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">
-      </div>
-    </li>
-    <li>
-      <a>
-        <div class="icon-box">
-          <Icon type="weixin"/>
-        </div>
-        <span>18279163180</span>
-      </a>
-      <div class="popup">
-        <img class="qrcode-img" src="https://img0.baidu.com/it/u=304503446,1584310435&fm=253&fmt=auto&app=138&f=GIF?w=200&h=200" alt="">
+        <img class="qrcode-img" :src="data.weixinQrCode" alt="">
       </div>
     </li>
   </ul>
@@ -53,6 +47,14 @@ export default {
   name: 'Contact',
   components: {
     Icon
+  },
+  props: {
+    data: {
+      type: Object,
+      default () {
+        return {}
+      }
+    }
   }
 }
 </script>
@@ -65,7 +67,7 @@ export default {
   margin 0
   color $gray
   font-size 18px
-  $itemHeight=30px
+  $itemHeight = 30px
   li
     position relative
     margin 14px 0
@@ -91,7 +93,7 @@ export default {
       background-color #fff
       transform scaleY(0)
       transform-origin bottom
-      transition .3s
+      transition 0.3s
       &::after
         position absolute
         bottom -5px
