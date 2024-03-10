@@ -1,9 +1,4 @@
 import Home from '@/views/Home'
-import Blog from '@/views/Blog'
-import BlogDetail from '@/views/Blog/Detail'
-import About from '@/views/About'
-import Project from '@/views/Project'
-import Message from '@/views/Message'
 const routes = [
   {
     name: 'home',
@@ -16,7 +11,7 @@ const routes = [
   {
     name: 'blog',
     path: '/article',
-    component: Blog,
+    component: () => import('@/views/Blog'),
     meta: {
       title: '文章'
     }
@@ -24,7 +19,7 @@ const routes = [
   {
     name: 'categoryBlog',
     path: '/article/cate/:categoryId',
-    component: Blog,
+    component: () => import('@/views/Blog'),
     meta: {
       title: '文章详情'
     }
@@ -32,7 +27,7 @@ const routes = [
   {
     name: 'blogDetail',
     path: '/article/:id',
-    component: BlogDetail,
+    component: () => import('@/views/Blog/Detail'),
     meta: {
       title: '文章详情'
     }
@@ -40,7 +35,7 @@ const routes = [
   {
     name: 'about',
     path: '/about',
-    component: About,
+    component: () => import('@/views/About'),
     meta: {
       title: '关于'
     }
@@ -48,7 +43,7 @@ const routes = [
   {
     name: 'project',
     path: '/project',
-    component: Project,
+    component: ()=> import('@/views/Project'),
     meta: {
       title: '项目&效果'
     }
@@ -56,7 +51,7 @@ const routes = [
   {
     name: 'message',
     path: '/message',
-    component: Message,
+    component: () => import('@/views/Message'),
     meta: {
       title: '留言板'
     }

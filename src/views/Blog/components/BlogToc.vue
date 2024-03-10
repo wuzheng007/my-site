@@ -16,17 +16,17 @@ export default {
   props: {
     list: {
       type: Array,
-      default () {
+      default() {
         return []
       }
     }
   },
-  data () {
+  data() {
     return {
       activeAnchor: '' // 激活的锚链接
     }
   },
-  created () {
+  created() {
     const setActiveAnchorDebounce = debounce(this.setActiveAnchor)
     this.$bus.$on('mainScroll', setActiveAnchorDebounce)
     this.$on('hook:beforeDestroy', () => {
@@ -40,7 +40,7 @@ export default {
      * @description 详细描述
      * @return {返回类型说明}
      */
-    toWithSelect () {
+    toWithSelect() {
       const getToc = (arr = []) => {
         return arr.map(item => {
           return {
@@ -58,7 +58,7 @@ export default {
      * @description 详细描述
      * @return {返回类型说明}
      */
-    doms () {
+    doms() {
       let doms = []
       const addDom = (list = []) => {
         list.forEach(item => {
@@ -75,7 +75,7 @@ export default {
     }
   },
   methods: {
-    handleNodeClick (node) {
+    handleNodeClick(node) {
       this.activeAnchor = node.anchor
       // 改变路径的哈希值,文章详情会跳转到相应的地方，因为对应的元素设置了对应的哈希值
       location.hash = node.anchor
@@ -87,7 +87,7 @@ export default {
      * @param {参数类型} 参数 参数说明
      * @return {返回类型说明}
      */
-    setActiveAnchor () {
+    setActiveAnchor() {
       this.activeAnchor = ''
       // 定义一个范围，当元素离视口200px时，算该元素的锚链接激活
       const range = 100
@@ -110,6 +110,7 @@ export default {
 .blog-toc-container
   box-sizing border-box
   width 300px
+  height 100%
   padding-left 20px
   overflow-y auto
   overflow-x hidden

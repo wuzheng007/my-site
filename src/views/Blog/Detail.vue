@@ -28,16 +28,16 @@ export default {
     BlogToc
   },
   computed: {
-    blogId () {
+    blogId() {
       return this.$route.params.id
     }
   },
   methods: {
-    fetchData () {
+    fetchData() {
       return getBlog(this.blogId)
     }
   },
-  updated () {
+  updated() {
     // 当页面刷新之后，会回到顶部，所有在这里将哈希值处理一下，已经页面跳转到之前激活的锚链接处
     const hash = location.hash
     location.hash = ''
